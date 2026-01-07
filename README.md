@@ -49,12 +49,12 @@ Install request context (request-id), structured logging, standard error respons
 
 ### Install (GitHub)
 
-    python -m pip install "git+https://github.com/<YOUR_GITHUB_ID>/<REPO_NAME>.git"
+    python -m pip install "git+https://github.com/CursedCat7/fastapi-prodkit.git"
 
 ### Install (local, editable)
 
-    git clone https://github.com/<YOUR_GITHUB_ID>/<REPO_NAME>.git
-    cd <REPO_NAME>
+    git clone https://github.com/CursedCat7/fastapi-prodkit.git
+    cd fastapi-prodkit
     python -m pip install -e .
 
 Optional extras:
@@ -254,13 +254,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for workflow and expectations.
 ## Security
 
 This is a personal side project maintained on a best-effort basis.  
-Please report vulnerabilities via the process described in `SECURITY.md`.
+Please report vulnerabilities via the process described in [SECURITY.md](SECURITY.md).
 
 ---
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
 
 ---
 

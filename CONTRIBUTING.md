@@ -81,10 +81,10 @@ If you use the compose dev environment:
 ## Security issues
 
 Please do not open public issues for vulnerabilities.  
-Follow `SECURITY.md` for responsible disclosure.
+Follow [SECURITY.md](SECURITY.md) for responsible disclosure.
 
 ---
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License (see `LICENSE`).
+By contributing, you agree that your contributions will be licensed under the MIT License (see [LICENSE](LICENSE)).

@@ -25,7 +25,7 @@ Please email the maintainer using the contact address listed on the maintainerâ€
 - GitHub profile: https://github.com/CursedCat7
 
 
-If you cannot access the profile email, you may use: **flak8001+security@gmail.com**
+If you cannot access the profile email, you may use: **CursedCat7@users.noreply.github.com**
 
 When emailing, please use the subject line:
 **[SECURITY] fastapi-prodkit vulnerability report**
