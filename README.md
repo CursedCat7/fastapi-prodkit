@@ -44,7 +44,26 @@ Install request context (request-id), structured logging, standard error respons
 
 ---
 
-## Install
+> **Note**: `fastapi-prodkit` is not published on PyPI yet.  
+> For now, install from GitHub (or from a local checkout). PyPI distribution will be added later.
+
+### Install (GitHub)
+
+    python -m pip install "git+https://github.com/<YOUR_GITHUB_ID>/<REPO_NAME>.git"
+
+### Install (local, editable)
+
+    git clone https://github.com/<YOUR_GITHUB_ID>/<REPO_NAME>.git
+    cd <REPO_NAME>
+    python -m pip install -e .
+
+Optional extras:
+
+    python -m pip install -e ".[dev,metrics,tracing]"
+
+---
+
+## Install (PyPI) - coming later
 
     pip install fastapi-prodkit
 
@@ -55,6 +74,8 @@ Optional extras:
     pip install "fastapi-prodkit[dev]"   # contributors
 
 ---
+
+
 
 ## Quickstart
 
