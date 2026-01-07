@@ -11,7 +11,7 @@ setup_app(
         service_name="prodkit-example",
         environment="dev",
         enable_metrics=True,
-        enable_tracing=False,
+        enable_tracing=True,
         include_error_details_in_response=True,
     ),
 )
