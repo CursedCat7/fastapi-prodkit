@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# venv pip to install editable
-/opt/venv/bin/pip install -e /workspace
+#check if fastapi_prodkit is installed in the venv
+if ! /opt/venv/bin/python -c "import fastapi_prodkit" >/dev/null 2>&1; then
+  /opt/venv/bin/pip install -e /workspace
+fi
 
-# venv python
 exec /opt/venv/bin/python -m uvicorn examples.app.main:app --host 0.0.0.0 --port 8000 --reload

@@ -5,7 +5,10 @@ from typing import Callable
 
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
-from starlette.types import ASGIApp, Response
+from starlette.responses import Response
+from starlette.types import ASGIApp
+from typing import Callable
+from starlette.requests import Request
 
 from ..context import request_id_var
 
