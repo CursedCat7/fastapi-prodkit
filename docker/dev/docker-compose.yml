@@ -1,0 +1,9 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - .:/workspace:delegated
+    ports:
+      - "8000:8000"
