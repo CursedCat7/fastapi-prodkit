@@ -40,9 +40,9 @@ tracing = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/<you>/fastapi-prodkit"
-Repository = "https://github.com/<you>/fastapi-prodkit"
-Issues = "https://github.com/<you>/fastapi-prodkit/issues"
+Homepage = "https://github.com/CursedCat7/fastapi-prodkit"
+Repository = "https://github.com/CursedCat7/fastapi-prodkit"
+Issues = "https://github.com/CursedCat7/fastapi-prodkit/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/fastapi_prodkit"]
