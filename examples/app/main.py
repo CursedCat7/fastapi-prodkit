@@ -1,5 +1,6 @@
-#for example test
+# for example test
 from fastapi import FastAPI
+
 from fastapi_prodkit import ProdkitConfig, setup_app
 
 app = FastAPI(title="prodkit-example")
@@ -15,9 +16,11 @@ setup_app(
     ),
 )
 
+
 @app.get("/ping")
 def ping():
     return {"ok": True}
+
 
 @app.get("/boom")
 def boom():

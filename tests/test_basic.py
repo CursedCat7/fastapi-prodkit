@@ -1,4 +1,4 @@
-#for test
+# for test
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
@@ -14,6 +14,7 @@ def test_request_id_header_is_set():
     r = client.get("/ping")
     assert "X-Request-ID" in r.headers
     assert r.headers["X-Request-ID"]
+
 
 def test_standard_error_schema():
     app = FastAPI()

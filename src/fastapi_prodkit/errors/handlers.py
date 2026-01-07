@@ -17,7 +17,9 @@ def install_error_handlers(app: FastAPI, *, include_details: bool) -> None:
             request_id=get_request_id(),
             details={"status_code": exc.status_code} if include_details else None,
         )
-        return JSONResponse(status_code=exc.status_code, content=payload.model_dump(exclude_none=True))
+        return JSONResponse(
+            status_code=exc.status_code, content=payload.model_dump(exclude_none=True)
+        )
 
     @app.exception_handler(RequestValidationError)
     async def validation_exception_handler(_: Request, exc: RequestValidationError):

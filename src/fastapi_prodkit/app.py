@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Optional
 
 from fastapi import FastAPI
 
@@ -34,13 +34,15 @@ class ProdkitConfig:
     enable_tracing: bool = False
 
     # readiness check hook (optional)
-    readiness_check: Optional[Callable[[], bool]] = None
+    readiness_check: Callable[[], bool] | None = None
 
 
-def setup_app(app: FastAPI, config: Optional[ProdkitConfig] = None) -> FastAPI:
+def setup_app(app: FastAPI, config: ProdkitConfig | None = None) -> FastAPI:
     cfg = config or ProdkitConfig()
 
-    configure_logging(service_name=cfg.service_name, environment=cfg.environment, json_logs=cfg.json_logs)
+    configure_logging(
+        service_name=cfg.service_name, environment=cfg.environment, json_logs=cfg.json_logs
+    )
 
     # Request context middleware (request_id + contextvars)
     app.add_middleware(
@@ -51,7 +53,12 @@ def setup_app(app: FastAPI, config: Optional[ProdkitConfig] = None) -> FastAPI:
     )
 
     install_error_handlers(app, include_details=cfg.include_error_details_in_response)
-    install_health_routes(app, health_path=cfg.health_path, ready_path=cfg.ready_path, readiness_check=cfg.readiness_check)
+    install_health_routes(
+        app,
+        health_path=cfg.health_path,
+        ready_path=cfg.ready_path,
+        readiness_check=cfg.readiness_check,
+    )
 
     if cfg.enable_metrics:
         from .metrics.prom import install_prometheus_metrics  # lazy import

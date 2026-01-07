@@ -1,14 +1,12 @@
 from __future__ import annotations
 
 import uuid
-from typing import Callable
+from collections.abc import Callable
 
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
-from typing import Callable
-from starlette.requests import Request
 
 from ..context import request_id_var
 
@@ -27,7 +25,9 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         self._generate = generate_request_id
         self._expose = expose_request_id_header
 
-    async def dispatch(self, request: Request, call_next: Callable[[Request], Response]) -> Response:
+    async def dispatch(
+        self, request: Request, call_next: Callable[[Request], Response]
+    ) -> Response:
         incoming = request.headers.get(self._header)
         rid = incoming or (str(uuid.uuid4()) if self._generate else None)
 
