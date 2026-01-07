@@ -13,8 +13,10 @@ RUN python -m venv /opt/venv && /opt/venv/bin/pip install --upgrade pip
 
 WORKDIR /workspace
 
+# dev 도구들은 venv에 미리 설치
 COPY pyproject.toml README.md /workspace/
 ARG PIP_EXTRAS="dev,metrics,tracing"
 RUN /opt/venv/bin/pip install ".[${PIP_EXTRAS}]"
 
-CMD ["bash", "-lc", "pip install -e . && python -m uvicorn examples.app.main:app --host 0.0.0.0 --port 8000 --reload"]
+COPY docker/dev/entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
