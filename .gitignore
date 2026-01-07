@@ -1,0 +1,85 @@
+# -------------------------
+# Python / Bytecode
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -------------------------
+# Virtual environments
+# -------------------------
+.venv/
+venv/
+ENV/
+env/
+.conda/
+.python-version
+
+# -------------------------
+# Packaging / build outputs
+# -------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# -------------------------
+# Test / Coverage / Cache
+# -------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# -------------------------
+# IDE / Editor
+# -------------------------
+.vscode/
+.idea/
+*.iml
+
+# -------------------------
+# OS
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+
+# -------------------------
+# Environment files / secrets
+# -------------------------
+.env
+.env.*
+!.env.example
+
+# -------------------------
+# Docker / Compose (local state)
+# -------------------------
+docker/grafana/data/
+docker/prometheus/data/
+docker/jaeger/data/
+
+# -------------------------
+# Jupyter
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# Node (if docs site later)
+# -------------------------
+node_modules/
+
+# -------------------------
+# Temporary files
+# -------------------------
+*.tmp
+*.swp
+*.swo

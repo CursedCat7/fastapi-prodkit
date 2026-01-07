@@ -9,7 +9,7 @@ services:
     working_dir: /workspace
     volumes:
       - .:/workspace:delegated
-      - prodkit_venv:/opt/venv
+      # - prodkit_venv:/opt/venv
     environment:
       #optionnal
       PROD_ENV: "dev"
@@ -84,5 +84,5 @@ services:
     profiles: ["tracing"]
 
 volumes:
-  prodkit_venv:
+  #prodkit_venv:
   grafana_data:
