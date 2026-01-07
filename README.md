@@ -226,7 +226,7 @@ Contributions are welcome, especially:
 - Version compatibility testing
 - Documentation and examples
 
-See `CONTRIBUTING.md` for workflow and expectations.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for workflow and expectations.
 
 ---
 
