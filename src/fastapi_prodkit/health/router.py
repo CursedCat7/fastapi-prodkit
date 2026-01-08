@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections.abc import Callable
 
 from fastapi import APIRouter, FastAPI
+from fastapi.responses import JSONResponse
 
 
 def install_health_routes(
@@ -19,9 +20,9 @@ def install_health_routes(
         return {"status": "ok"}
 
     @router.get(ready_path, tags=["health"])
-    def readyz():  # for development boot. should be Response(...)
-        if readiness_check is None:
+    def readyz():
+        if readiness_check is None or readiness_check():
             return {"status": "ok"}
-        return {"status": "ok"} if readiness_check() else ({"status": "not_ready"}, 503)
+        return JSONResponse(status_code=503, content={"status": "unavailable"})
 
     app.include_router(router)

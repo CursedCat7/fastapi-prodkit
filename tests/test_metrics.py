@@ -31,5 +31,5 @@ def test_metrics_enabled():
     response = client.get("/metrics")
     assert response.status_code == 200
     # Check for some content that should be in a Prometheus scrape
-    assert 'http_requests_latency_seconds_bucket' in response.text
-    assert 'fastapi_app_info' in response.text
+    assert 'http_request_duration_seconds_bucket' in response.text
+    assert 'http_requests_total' in response.text
