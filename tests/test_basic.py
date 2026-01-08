@@ -19,7 +19,10 @@ def test_request_id_header_is_set():
 def test_standard_error_schema():
     app = FastAPI()
     setup_app(app, ProdkitConfig(include_error_details_in_response=False))
-    app.get("/boom")(lambda: 1 / 0)
+
+    @app.get("/boom")
+    async def boom():
+        1 / 0
 
     client = TestClient(app)
     r = client.get("/boom")

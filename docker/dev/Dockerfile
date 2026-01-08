@@ -13,7 +13,7 @@ RUN python -m venv /opt/venv && /opt/venv/bin/pip install --upgrade pip
 
 WORKDIR /workspace
 
-# dev 도구들은 venv에 미리 설치
+# dev install in venv
 COPY pyproject.toml README.md /workspace/
 ARG PIP_EXTRAS="dev,metrics,tracing"
 RUN /opt/venv/bin/pip install ".[${PIP_EXTRAS}]"

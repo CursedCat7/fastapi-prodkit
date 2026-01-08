@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 from fastapi import FastAPI
 
-from .errors.handlers import install_error_handlers
+from .errors.handlers import ProdkitExceptionMiddleware, install_error_handlers
 from .health.router import install_health_routes
 from .logging import configure_logging
 from .middleware.request_context import RequestContextMiddleware
@@ -43,6 +43,9 @@ def setup_app(app: FastAPI, config: ProdkitConfig | None = None) -> FastAPI:
     configure_logging(
         service_name=cfg.service_name, environment=cfg.environment, json_logs=cfg.json_logs
     )
+
+    # Exception middleware must be the first one
+    app.add_middleware(ProdkitExceptionMiddleware)
 
     # Request context middleware (request_id + contextvars)
     app.add_middleware(

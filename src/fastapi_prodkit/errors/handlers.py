@@ -3,9 +3,26 @@ from __future__ import annotations
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 
 from ..context import get_request_id
 from .model import ErrorResponse
+
+
+class ProdkitExceptionMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next: RequestResponseEndpoint):
+        try:
+            return await call_next(request)
+        except Exception as exc:
+            payload = ErrorResponse(
+                code="internal_error",
+                message="Internal server error",
+                request_id=get_request_id(),
+                details={"exception": type(exc).__name__},
+            )
+            return JSONResponse(
+                status_code=500, content=payload.model_dump(exclude_none=True)
+            )
 
 
 def install_error_handlers(app: FastAPI, *, include_details: bool) -> None:
@@ -31,12 +48,3 @@ def install_error_handlers(app: FastAPI, *, include_details: bool) -> None:
         )
         return JSONResponse(status_code=422, content=payload.model_dump(exclude_none=True))
 
-    @app.exception_handler(Exception)
-    async def unhandled_exception_handler(_: Request, exc: Exception):
-        payload = ErrorResponse(
-            code="internal_error",
-            message="Internal server error",
-            request_id=get_request_id(),
-            details={"exception": type(exc).__name__} if include_details else None,
-        )
-        return JSONResponse(status_code=500, content=payload.model_dump(exclude_none=True))
